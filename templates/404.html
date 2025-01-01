@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}404 - Page Not Found{% endblock %}
+
+{% block extra_css %}
+<style>
+    .error-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        background: #000;
+        color: white;
+        text-align: center;
+    }
+
+    .error-content {
+        max-width: 600px;
+    }
+
+    .error-code {
+        font-size: clamp(6rem, 15vw, 12rem);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 1rem;
+        background: linear-gradient(120deg, #b666d2, #ff6b6b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .error-message {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: #a8a8a8;
+    }
+
+    .error-description {
+        color: #666;
+        margin-bottom: 3rem;
+    }
+
+    .back-home {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: white;
+        color: black;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: transform 0.3s;
+    }
+
+    .back-home:hover {
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .error-code {
+            font-size: 5rem;
+        }
+        .error-message {
+            font-size: 1.2rem;
+        }
+    }
+</style>
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<link rel="stylesheet" href="{% static 'css/style3.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-code">404</div>
+        <h1 class="error-message">Page Not Found</h1>
+        <p class="error-description">The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <a href="{% url 'app:index' %}" class="back-home">Back to Home →</a>
+    </div>
+</div>
+{% endblock %} 

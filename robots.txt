@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /admin/marwaneMezzane/Coding/debug/makeiteasy/controle/
+Disallow: /admin/
+
+# Allow Google
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/marwaneMezzane/Coding/debug/makeiteasy/controle/
+Disallow: /admin/ 

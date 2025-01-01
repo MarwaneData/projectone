@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} | Marwane{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+<link rel="stylesheet" href="{% static 'css/blog_details.css' %}">
+{% endblock %}
+
+{% block content %}
+<article class="blog-post" itemscope itemtype="http://schema.org/BlogPosting">
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress">
+        <div class="progress-inner"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="blog-hero">
+        <div class="hero-inner">
+            <!-- Article Meta -->
+            <div class="post-meta">
+                <div class="meta-category">
+                    <span class="category-dot"></span>
+                    <span itemprop="articleSection">{{ post.category.name }}</span>
+                </div>
+                <div class="meta-info">
+                    <time itemprop="datePublished" datetime="{{ post.published_date|date:'Y-m-d' }}">
+                        <i class="far fa-calendar"></i> {{ post.published_date|date:"F d, Y" }}
+                    </time>
+                    <span><i class="far fa-clock"></i> {{ post.reading_time }} min read</span>
+                    <span><i class="far fa-eye"></i> {{ post.views }}</span>
+                </div>
+            </div>
+
+            <!-- Title Section -->
+            <div class="title-wrapper">
+                <h1 class="post-title" itemprop="headline">{{ post.title }}</h1>
+                <p class="post-subtitle" itemprop="alternativeHeadline">{{ post.subtitle }}</p>
+            </div>
+
+            <!-- Author Card -->
+            <div class="author-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                {% if post.author_image %}
+                    <img src="{{ post.author_image.url }}" alt="{{ post.author_name }}" class="author-image" itemprop="image">
+                {% endif %}
+                <div class="author-info">
+                    <div class="author-name" itemprop="name">Written by {{ post.author_name }}</div>
+                    <div class="author-role" itemprop="jobTitle">{{ post.author_title }}</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Table of Contents -->
+    <nav class="content-nav">
+        <div class="toc-wrapper">
+            <h2 class="toc-title">Table of Contents</h2>
+            <ul class="toc-list">
+                <li><a href="#intro">Introduction</a></li>
+                {% for section in post.sections.all %}
+                    {% if section.title %}
+                        <li><a href="#section{{ forloop.counter }}">Section {{ forloop.counter }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-wrapper2">
+        {% for section in post.sections.all %}
+            <div class="content-section" id="section{{ forloop.counter }}" itemprop="articleBody">
+                {% if section.title %}
+                    <h2>{{ section.title }}</h2>
+                {% endif %}
+
+                {% if section.section_type == 'text' %}
+                    {{ section.get_formatted_content|safe }}
+                
+                {% elif section.section_type == 'code' %}
+                    <div class="code-example">
+                        <button class="copy-button">
+                            <i class="far fa-copy"></i>
+                            <span>Copy</span>
+                        </button>
+                        <pre><code class="language-{{ section.code_language }}">{{ section.code|safe }}</code></pre>
+                    </div>
+                
+                {% elif section.section_type == 'image' %}
+                    {% if section.image %}
+                        <img src="{{ section.image.url }}" alt="{{ section.title }}" class="section-image">
+                    {% endif %}
+                
+                {% elif section.section_type == 'quote' %}
+                    <blockquote class="section-quote">
+                        {{ section.content|safe }}
+                    </blockquote>
+                
+                {% elif section.section_type == 'list' %}
+                    <div class="section-list">
+                        {{ section.content|safe }}
+                    </div>
+                
+                {% elif section.section_type == 'timeline' %}
+                    <div class="trend-timeline">
+                        {{ section.content|safe }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <!-- Share Section -->
+        <div class="share-toolbar">
+            <h3>Share this article</h3>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ post.title|urlencode }}" class="share-button twitter" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" class="share-button linkedin" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="share-button facebook" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="author-bio">
+            <div class="bio-header">
+                {% if post.author_image %}
+                    <img src="{{ post.author_image.url }}" alt="{{ post.author_name }}" class="bio-image">
+                {% endif %}
+                <div class="bio-info">
+                    <h3>About {{ post.author_name }}</h3>
+                    <p>{{ post.author_bio }}</p>
+                </div>
+            </div>
+            <div class="bio-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+        <!-- Related Posts -->
+        {% if related_posts %}
+        <section class="related-posts">
+            <h3>Related Articles</h3>
+            <div class="posts-grid">
+                {% for related in related_posts %}
+                <article class="related-post">
+                    {% if related.related_post.sections.first.image %}
+                        <img src="{{ related.related_post.sections.first.image.url }}" alt="{{ related.related_post.title }}">
+                    {% endif %}
+                    <h4>{{ related.related_post.title }}</h4>
+                    <time>{{ related.related_post.published_date|date:"F d, Y" }}</time>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </div>
+</article>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/prism.js' %}"></script>
+<script src="{% static 'js/blog.js' %}"></script>
+{% endblock %}
+
+{% block meta_title %}{{ post.title }} | Marwane Mezzane's Blog{% endblock %}
+
+{% block meta_description %}{{ post.subtitle|default:"Read this insightful article" }}. Expert analysis and insights on AI and Data technology.{% endblock %}
+
+{% block og_title %}{{ post.title }} | AI & Data Insights{% endblock %}
+{% block og_description %}{{ post.subtitle }} Learn more about AI and Data innovation from expert consultant Marwane Mezzane.{% endblock %}
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ post.title }}",
+    "description": "{{ post.subtitle }}",
+    "image": "{{ post.sections.first.image.url }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ post.author_name }}",
+        "jobTitle": "{{ post.author_title }}"
+    },
+    "datePublished": "{{ post.published_date|date:'c' }}",
+    "dateModified": "{{ post.updated_date|date:'c' }}",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Marwane Mezzane",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{% static 'images/logo.png' %}"
+        }
+    }
+}
+</script>

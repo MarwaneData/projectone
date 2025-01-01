@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Marwane Mezzane | AI & Data Innovation Expert in Casablanca{% endblock %}
+
+{% block meta_title %}Marwane Mezzane | Leading AI & Data Innovation Expert in Morocco{% endblock %}
+
+{% block meta_description %}Expert AI & Data consultant in Casablanca specializing in LLMs, intelligent agents, NLP, and Power BI solutions. Transform your business with cutting-edge AI and data analytics.{% endblock %}
+
+{% block meta_keywords %}AI consultant Morocco, data analytics Casablanca, LLM expert, NLP solutions, Power BI consultant, business intelligence Morocco, AI automation, machine learning expert{% endblock %}
+
+{% block og_type %}website{% endblock %}
+{% block og_title %}Marwane Mezzane | AI & Data Innovation Leader in Morocco{% endblock %}
+{% block og_description %}Transform your business with AI & Data solutions. Expert in LLMs, NLP, and Business Intelligence. Based in Casablanca, serving clients worldwide.{% endblock %}
+{% block og_image %}{% static 'images/marwane-og.jpg' %}{% endblock %}
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+        "@type": "Person",
+        "name": "Marwane Mezzane",
+        "jobTitle": "AI & Data Consultant",
+        "description": "Expert AI & Data consultant specializing in LLMs, NLP, and Business Intelligence",
+        "image": "{% static 'images/marwane.png' %}",
+        "url": "{{ request.build_absolute_uri }}",
+        "sameAs": [
+            "https://www.linkedin.com/in/marwane",
+            "https://github.com/marwane",
+            "https://twitter.com/MarwaneAI"
+        ],
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Large Language Models",
+            "Natural Language Processing",
+            "Business Intelligence",
+            "Power BI",
+            "Data Analytics",
+            "Machine Learning"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Casablanca",
+            "addressCountry": "Morocco"
+        },
+        "offers": {
+            "@type": "Offer",
+            "description": "AI & Data Consulting Services"
+        }
+    }
+}
+</script>
+{% endblock %}
+
+{% block body_schema %}https://schema.org/ProfilePage{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style3.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="main-content">
+    <div class="content-wrapper">
+        <div class="left-section">
+            <h1 class="name-title">
+                MY NAME<br>
+                IS <span class="accent">Marwane<br>
+                </span>
+            </h1>
+            <div class="role">
+                <span>AI & Data Consultant</span> based in <span class="location">Casablanca</span>
+            </div>
+            <a href="{% url 'app:contact' %}" class="cta-button">Let's talk with me</a>
+            <div class="contact-info">
+                <a href="tel:+212617600193">
+                    <i class="fas fa-phone"></i>
+                    +212 617 600 193
+                </a>
+                <a href="mailto:contact@maroneai.com">
+                    <i class="fas fa-envelope"></i>
+                    contact@maroneai.com
+                </a>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <img src="{% static 'images/marwane.png' %}" alt="Mezzane Marwane" class="profile-image">
+        </div>
+    </div>
+</main>
+
+<!-- AI Section -->
+<section class="section">
+    <div class="content-wrapper">
+        <div class="text-content">
+            <h2 class="section-title">Innovative AI Solutions</h2>
+            <p class="section-description">Building smart business solutions with modern AI technologies: Large Language Models (LLM), intelligent agents, and Natural Language Processing (NLP). Turning complex AI into simple, effective tools that save time and reduce costs.
+            </p>
+            <a href="{% url 'app:ai_projects' %}" class="primary-button">Explore More ↗</a>
+        </div>
+        <div class="image-grid">
+            <div class="grid-item">
+                <div class="grid-item-overlay">
+                    <span class="overlay-text">LARGE</span>
+                    <span class="overlay-text">LANGUAGE</span>
+                </div>
+                <img src="{% static 'images/ai1.png' %}" alt="Large Language Models" />
+            </div>
+            <div class="grid-item">
+                <div class="grid-item-overlay">
+                    <span class="overlay-text">NATURAL</span>
+                    <span class="overlay-text">PROCESSING</span>
+                </div>
+                <img src="{% static 'images/ai2.png' %}" alt="Natural Language Processing" />
+            </div>
+            <div class="grid-item">
+                <div class="grid-item-overlay">
+                    <span class="overlay-text">MACHINE</span>
+                    <span class="overlay-text">LEARNING</span>
+                </div>
+                <img src="{% static 'images/ai3.png' %}" alt="Machine Learning" />
+            </div>
+            <div class="grid-item">
+                <div class="grid-item-overlay">
+                    <span class="overlay-text">DEEP</span>
+                    <span class="overlay-text">INTELLIGENCE</span>
+                </div>
+                <img src="{% static 'images/ai4.png' %}" alt="Deep Intelligence" />
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="content-wrapper">
+        <div class="text-content">
+            <h2 class="section-title">Advanced Data Analytics & Insights</h2>
+            <p class="section-description">
+                Turn complex data into clear business insights with powerful analytics tools and Power BI dashboards. Providing custom Business Intelligence solutions that help you understand your data, track key metrics, and make data-driven decisions with confidence.
+            </p>
+            <a href="{% url 'app:works' %}" class="primary-button">View Demo ↗</a>
+        </div>
+        <div class="image-wrapper">
+            <img src="{% static 'images/dashboard.png' %}" alt="Analytics Dashboard" class="dashboard-image" />
+        </div>
+    </div>
+</section>
+<!-- Work Section -->
+<section class="work-container">
+    <div class="work-inner">
+        <span class="work-label">Work</span>
+        <h2 class="work-heading">RECENT PROJECT</h2>
+        
+        <div class="work-items-grid">
+            {% for project in recent_projects %}
+            <div class="work-item">
+                <span class="work-item-tag">{{ project.category }}</span>
+                <h3 class="work-item-title">{{ project.title }}</h3>
+                <a href="{% url 'app:project_detail' project.slug %}" class="work-item-arrow">
+                    <span class="work-arrow-icon">↗</span>
+                </a>
+                <div class="work-item-image">
+                    {% if project.thumbnail %}
+                        <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" />
+                    {% else %}
+                        <img src="{% static 'images/ai1.png' %}" alt="{{ project.title }}" />
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="work-load-more">
+            <a href="{% url 'app:works' %}" class="work-load-button">more ↗</a>
+        </div>
+    </div>
+</section>
+<section class="blog-container">
+    <div class="blog-inner">
+        <span class="blog-label">Blog</span>
+        <h2 class="blog-heading">READ MY BLOG</h2>
+        
+        <div class="blog-grid">
+            {% for blog in latest_blogs %}
+            <div class="blog-item">
+                <a href="{% url 'app:blog_detail' blog.slug %}">
+                    <div class="blog-image">
+                        {% if blog.sections.first.image %}
+                            <img src="{{ blog.sections.first.image.url }}" alt="{{ blog.title }}"/>
+                        {% endif %}
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">{{ blog.published_date|date:"d F, Y" }}</span>
+                        <h3 class="blog-title">{{ blog.title }}</h3>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="blog-load-more">
+            <a href="{% url 'app:blogs' %}" class="blog-load-button">Load more ↗</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+<script src="{% static 'js/scripts.js' %}"></script>
+<script src="{% static 'js/navigation.js' %}"></script>
+{% block extra_js %}
+
+{% endblock %} 

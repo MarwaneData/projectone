@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock %}
+
+{% block title %}Blogs | Marwane - AI & Data Consultant{% endblock %}
+
+{% block meta_title %}AI & Data Insights | Marwane Mezzane's Blog{% endblock %}
+
+{% block meta_description %}Expert insights on AI, machine learning, and data analytics. Stay updated with the latest trends and innovations in artificial intelligence and data science.{% endblock %}
+
+{% block og_title %}AI & Data Blog | Expert Insights by Marwane Mezzane{% endblock %}
+{% block og_description %}Explore expert articles on artificial intelligence, machine learning, and data analytics. Latest insights and trends in AI technology.{% endblock %}
+
+{% block content %}
+<section class="blog-header">
+    <div class="blog-header-inner">
+        <div class="blog-title-wrap">
+            <span class="blog-label">My Blog</span>
+            <h1 class="blog-title">Ideas & <br>Insights</h1>
+            <p class="blog-subtitle">Exploring the intersection of AI, design, and technology</p>
+        </div>
+        <div class="blog-search">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search articles...">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Categories -->
+<nav class="blog-categories">
+    <div class="category-container">
+        <button class="category-pill active">All</button>
+        {% for category in categories %}
+            <button class="category-pill">{{ category.name }}</button>
+        {% endfor %}
+    </div>
+</nav>
+
+<!-- Blog Posts Grid -->
+<section class="blog-posts">
+    <div class="posts-container">
+        {% for post in posts %}
+            <article class="post-item featured">
+                <div class="post-content">
+                    <span class="post-date">{{ post.published_date|date:"F d, Y" }}</span>
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <p class="post-excerpt">{{ post.subtitle }}</p>
+                    <div class="post-meta">
+                        <div class="post-tags">
+                            <span class="post-tag">{{ post.category.name }}</span>
+                        </div>
+                        <a href="{% url 'app:blog_detail' post.slug %}" class="read-more">Read Article ↗</a>
+                    </div>
+                </div>
+                <div class="post-image">
+                    {% if post.sections.first.image %}
+                        <img src="{{ post.sections.first.image.url }}" alt="{{ post.title }}">
+                    {% endif %}
+                </div>
+            </article>
+        {% empty %}
+            <p>No posts found.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const categoryPills = document.querySelectorAll('.category-pill');
+    const posts = document.querySelectorAll('.post-item');
+
+    // Live search functionality
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        posts.forEach(post => {
+            const title = post.querySelector('.post-title').textContent.toLowerCase();
+            const excerpt = post.querySelector('.post-excerpt').textContent.toLowerCase();
+            post.style.display = 
+                title.includes(searchTerm) || excerpt.includes(searchTerm) 
+                    ? 'flex' 
+                    : 'none';
+        });
+    });
+
+    // Category filtering
+    categoryPills.forEach(pill => {
+        pill.addEventListener('click', function() {
+            categoryPills.forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+            const category = this.textContent;
+            
+            posts.forEach(post => {
+                const postCategory = post.querySelector('.post-tag').textContent;
+                post.style.display = 
+                    (category === 'All' || category === postCategory) 
+                        ? 'flex' 
+                        : 'none';
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

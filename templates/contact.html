@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact | Marwane{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact-page.css' %}">
+<style>
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        animation: slideIn 0.5s ease-out;
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    .alert-success {
+        background-color: rgba(40, 167, 69, 0.1);
+        border: 2px solid #28a745;
+        color: #28a745;
+    }
+    
+    .alert-error {
+        background-color: rgba(220, 53, 69, 0.1);
+        border: 2px solid #dc3545;
+        color: #dc3545;
+    }
+</style>
+{% endblock %}
+
+{% block meta_title %}Contact Marwane Mezzane | AI & Data Consultation{% endblock %}
+
+{% block meta_description %}Get in touch for expert AI and Data consulting services. Schedule a consultation with Marwane Mezzane for your AI and data analytics needs in Casablanca.{% endblock %}
+
+{% block og_title %}Connect with Marwane Mezzane | AI & Data Expert{% endblock %}
+{% block og_description %}Ready to transform your business with AI? Contact Marwane Mezzane for expert consultation in AI and data solutions.{% endblock %}
+
+{% block content %}
+<section class="contact-page">
+    <div class="contact-header">
+        <div class="badge">Get in Touch</div>
+        <h1 class="contact-title">Let's Build Something Amazing Together</h1>
+        <p class="contact-subtitle">Have questions or want to discuss your next project? I'm here to help.</p>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="contact-grid">
+        <!-- Contact Info Cards -->
+        <div class="contact-info-grid">
+            <div class="info-card glass-effect">
+                <div class="icon-wrapper">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Location</h3>
+                <p>Casablanca, Morocco</p>
+            </div>
+
+            <div class="info-card glass-effect">
+                <div class="icon-wrapper">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <p><a href="mailto:contact@maroneai.com">contact@maroneai.com</a></p>
+            </div>
+
+            <div class="info-card glass-effect">
+                <div class="icon-wrapper">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Phone</h3>
+                <p><a href="tel:+212617600193">+212 617 600 193</a></p>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-container glass-effect">
+            <form class="contact-form" method="POST" action="{% url 'app:contact' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+
+                <input type="submit" value="Send Message" class="submit-btn">
+            </form>
+        </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="social-links">
+        <h3>Connect With Me</h3>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mmarwane/" class="social-icon glass-effect" title="LinkedIn" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/MarwaneData/" class="social-icon glass-effect" title="GitHub" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %} 

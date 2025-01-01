@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/works.css' %}">
+{% endblock %}
+
+{% block title %}Works | Marwane - AI & Data Consultant{% endblock %}
+
+{% block meta_title %}Portfolio | Marwane Mezzane's AI & Data Projects{% endblock %}
+
+{% block meta_description %}Explore successful AI and Data projects by Marwane Mezzane. Case studies in machine learning, data analytics, and business intelligence solutions.{% endblock %}
+
+{% block og_title %}AI & Data Portfolio | Marwane Mezzane{% endblock %}
+{% block og_description %}View our portfolio of successful AI and Data projects. Real-world implementations of machine learning and analytics solutions.{% endblock %}
+
+{% block content %}
+<section class="works-hero">
+    <div class="works-hero-inner">
+        <div class="creative-grid">
+            <div class="creative-text">
+                <span class="emoji-text">✨</span>
+                <h1 class="fun-heading">Let's Create<br>Something Cool</h1>
+                <p class="fun-text">Turn your ideas into reality with creative and innovative solutions.</p>
+                <div class="scroll-indicator">
+                    <span>Scroll to explore</span>
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section class="projects-section">
+    <div class="projects-inner">
+        <span class="projects-label">Work</span>
+        <h2 class="projects-heading">RECENT PROJECT</h2>
+
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <div class="project-info">
+                    <span class="project-category">{{ project.category }}</span>
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <a href="{% url 'app:project_detail' project.slug %}" class="project-arrow">↗</a>
+                </div>
+                <div class="project-image">
+                    <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

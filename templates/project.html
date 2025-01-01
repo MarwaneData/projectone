@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/project.css' %}">
+{% endblock %}
+
+{% block title %}{{ project.title }} | Marwane{% endblock %}
+
+{% block meta_title %}{{ project.title }} | Marwane Mezzane{% endblock %}
+
+{% block meta_description %}{{ project.subtitle|default:"Explore this innovative AI project" }}. Learn about the implementation, technology stack, and business impact.{% endblock %}
+
+{% block og_title %}{{ project.title }} | AI Project Case Study{% endblock %}
+{% block og_description %}Detailed case study of {{ project.title }}. Discover the implementation process and results of this AI solution.{% endblock %}
+
+{% block content %}
+<article class="project-detail">
+    <!-- Hero Section -->
+    <header class="project-hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <span class="project-category">{{ project.category }}</span>
+                <h1 class="project-title">{{ project.title }}</h1>
+                {% if project.subtitle %}
+                    <p class="project-subtitle">{{ project.subtitle }}</p>
+                {% endif %}
+            </div>
+            <div class="hero-image">
+                <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="project-content">
+        {% for section in sections %}
+            {% if section.section_type == 'heading' %}
+                <div class="content-section section-heading">
+                    <h2>{{ section.title }}</h2>
+                </div>
+            
+            {% elif section.section_type == 'text' %}
+                <div class="content-section section-text">
+                    {{ section.content|safe }}
+                </div>
+            
+            {% elif section.section_type == 'image' %}
+                <div class="content-section section-image {% if section.image_size %}{{ section.image_size }}{% endif %}">
+                    <figure>
+                        <img 
+                            src="{{ section.image.url }}" 
+                            alt="{{ section.title }}" 
+                            loading="lazy"
+                            {% if section.image_width %}width="{{ section.image_width }}"{% endif %}
+                        >
+                        {% if section.title %}
+                            <figcaption>{{ section.title }}</figcaption>
+                        {% endif %}
+                    </figure>
+                </div>
+            
+            {% elif section.section_type == 'gallery' %}
+                <div class="content-section section-gallery">
+                    <div class="gallery-grid">
+                        <img src="{{ section.image.url }}" alt="{{ section.title }}" loading="lazy">
+                    </div>
+                </div>
+            
+            {% elif section.section_type == 'quote' %}
+                <div class="content-section section-quote">
+                    <blockquote>
+                        {{ section.content|safe }}
+                    </blockquote>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Navigation -->
+    <nav class="project-navigation">
+        <a href="{% url 'app:works' %}" class="back-to-works">
+            <span class="nav-icon">←</span>
+            Back to Works
+        </a>
+    </nav>
+</article>
+{% endblock %} 

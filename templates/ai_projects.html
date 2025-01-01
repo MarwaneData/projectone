@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}AI Solutions | Marwane{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/ai_projects.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style1.css' %}">
+{% endblock %}
+
+{% block meta_title %}AI Solutions & Projects | Marwane Mezzane{% endblock %}
+
+{% block meta_description %}Explore cutting-edge AI solutions and projects by Marwane Mezzane. From machine learning to deep neural networks, discover how AI can transform your business.{% endblock %}
+
+{% block og_title %}Innovative AI Solutions | Marwane Mezzane{% endblock %}
+{% block og_description %}Browse our portfolio of successful AI implementations. Custom solutions in machine learning, neural networks, and intelligent automation.{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="ai-hero">
+    <div class="hero-content">
+        <div class="badge">AI Solutions</div>
+        <h1 class="hero-title">Build Intelligent Solutions with AI</h1>
+        <p class="hero-subtitle">Transform your business with cutting-edge artificial intelligence. From machine learning to deep neural networks, we build solutions that drive real results.</p>
+        <div class="hero-buttons">
+            <a href="{% url 'app:contact' %}" class="primary-btn">Get Started</a>
+            <a href="#ai-workflow" class="secondary-btn">Learn More →</a>
+        </div>
+        <div class="tech-stack">
+            <span>Powered by:</span>
+            <div class="tech-logos">
+                <!-- AI Models -->
+                <div class="logo-group ai-models">
+                    <!-- OpenAI -->
+                    <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg" alt="OpenAI" class="openai-logo">
+                    <!-- Meta AI -->
+                    <img src="https://www.victoryxr.com/wp-content/uploads/2023/04/Meta-Logo-1024x576.png.webp" alt="Meta AI" class="meta-logo">
+                    <!-- Google Gemini -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Google Gemini" class="gemini-logo">
+                </div>
+                <!-- ML Frameworks -->
+                <div class="logo-group frameworks">
+                    <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="TensorFlow">
+                    <img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-icon.svg" alt="PyTorch">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn">
+                    <img src="https://www.vectorlogo.zone/logos/opencv/opencv-icon.svg" alt="OpenCV">
+                    <img src="https://raw.githubusercontent.com/valohai/ml-logos/master/keras.svg" alt="Keras">
+                    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <img src="https://cdn.openai.com/research-covers/dall-e-3/2x-no-watermark.jpg" alt="AI Visualization">
+        <div class="gradient-overlay"></div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="stat-item">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Accuracy Rate</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">AI Projects</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Model Monitoring</span>
+    </div>
+</section>
+
+<!-- Solutions Grid -->
+<section class="solutions-section">
+    <div class="section-header">
+        <h2>AI Solutions</h2>
+        <p>Comprehensive AI services tailored to your needs</p>
+    </div>
+    <div class="solutions-grid">
+        <div class="solution-card">
+            <div class="card-visual">
+                <img src="{% static 'images/ml.jpg' %}" alt="Machine Learning">
+                <div class="visual-overlay"></div>
+            </div>
+            <div class="card-content">
+                <h3>Machine Learning</h3>
+                <p>Custom ML models for prediction, classification, and optimization</p>
+                <ul class="feature-list">
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </span>
+                        Predictive Analytics
+                    </li>
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </span>
+                        Pattern Recognition
+                    </li>
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </span>
+                        Automated Decision Making
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="solution-card highlighted">
+            <div class="card-visual">
+                <img src="{% static 'images/bot.jpg' %}" alt="Deep Learning">
+                <div class="visual-overlay"></div>
+            </div>
+            <div class="card-content">
+                <h3>Deep Learning</h3>
+                <p>Advanced neural networks for complex problem solving</p>
+                <ul class="feature-list">
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-camera"></i>
+                        </span>
+                        Image Recognition
+                    </li>
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-language"></i>
+                        </span>
+                        Natural Language Processing
+                    </li>
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-microphone"></i>
+                        </span>
+                        Speech Recognition
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="solution-card">
+            <div class="card-visual">
+                <img src="{% static 'images/pb.jpg' %}" alt="Data Analytics">
+                <div class="visual-overlay"></div>
+            </div>
+            <div class="card-content">
+                <h3>Data Analytics</h3>
+                <p>Transform raw data into actionable insights</p>
+                <ul class="feature-list">
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </span>
+                        Business Intelligence
+                    </li>
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-calculator"></i>
+                        </span>
+                        Statistical Analysis
+                    </li>
+                    <li>
+                        <span class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </span>
+                        Data Visualization
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="projects-section">
+    <div class="section-header">
+        <h2>Featured AI Projects</h2>
+        <p>See our AI solutions in action</p>
+    </div>
+    <div class="projects-grid">
+        {% for project in ai_projects %}
+        <a href="{% url 'app:project_detail' project.slug %}" class="project-card-link">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <div class="project-meta">
+                        <span class="project-category">{{ project.category }}</span>
+                        <span class="project-date">{{ project.published_date|date:"M Y" }}</span>
+                    </div>
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.subtitle }}</p>
+                    <div class="project-footer">
+                        <span class="project-link">
+                            View Case Study
+                            <span class="arrow">→</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% empty %}
+        <div class="no-projects">
+            <p>No AI projects available at the moment.</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Let's discuss how AI can drive your success</p>
+        <a href="{% url 'app:contact' %}" class="cta-button">Schedule a Consultation →</a>
+    </div>
+</section>
+{% endblock %} 

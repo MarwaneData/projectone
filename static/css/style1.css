@@ -1,0 +1,229 @@
+/* Layout Classes */
+.section {
+    padding:  4rem;
+    background: #fff;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.text-content {
+    flex: 1;
+    padding-top: 2rem;
+}
+
+/* Typography Classes */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Button Classes */
+.primary-button {
+    display: inline-block;
+    background: #1a1a1a;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: transform 0.3s;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Grid Classes */
+.image-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    position: relative;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.grid-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 2;
+    backdrop-filter: blur(3px);
+}
+
+.grid-item:hover .grid-item-overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.4s ease;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 5px 15px;
+    border-radius: 4px;
+    margin: 3px 0;
+}
+
+.grid-item:hover .overlay-text {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.grid-item:hover .overlay-text:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.grid-item:hover .overlay-text:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.grid-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Animation for grid items */
+.grid-item.animate {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.grid-item:nth-child(2) { animation-delay: 0.2s; }
+.grid-item:nth-child(3) { animation-delay: 0.4s; }
+.grid-item:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Classes */
+.fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .section {
+        padding: 4rem 2rem;
+    }
+    
+    .content-wrapper {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 890px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Always show overlay on mobile */
+    .grid-item-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .overlay-text {
+        transform: scale(1);
+        opacity: 1;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Remove hover effects on mobile */
+    .grid-item:hover img {
+        transform: none;
+    }
+
+    .grid-item img {
+        transition: none;
+    }
+}
+
+/* Add tablet breakpoint for medium-sized devices */
+@media (max-width: 768px) {
+    .grid-item-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .overlay-text {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .grid-item:hover img {
+        transform: none;
+    }
+}

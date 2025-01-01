@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Marwane Mezzane | AI & Data Expert in Morocco{% endblock %}
+
+{% block meta_title %}About Marwane | AI, Machine Learning & Power BI Expert{% endblock %}
+
+{% block meta_description %}Meet Marwane Mezzane, your AI and Data expert in Morocco. Specializing in AI solutions, Power BI dashboards, and predictive analytics to help businesses grow.{% endblock %}
+
+{% block meta_keywords %}AI expert Morocco, Power BI consultant, data analytics expert, machine learning consultant, LLM specialist, business intelligence expert, predictive analytics{% endblock %}
+
+{% block og_title %}Meet Marwane | Your AI & Data Solutions Expert{% endblock %}
+{% block og_description %}Learn about Marwane's expertise in AI, Power BI, and data analytics. Helping businesses in Morocco and worldwide with smart data solutions.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+        "@type": "Person",
+        "name": "Marwane Mezzane",
+        "jobTitle": "AI & Data Expert",
+        "description": "AI and Data expert specializing in Power BI, Machine Learning, and Business Intelligence",
+        "image": "{% static 'images/about.png' %}",
+        "alumniOf": "Data Science and AI",
+        "knowsAbout": [
+            "Artificial Intelligence",
+            "Power BI Dashboards",
+            "Machine Learning",
+            "Predictive Analytics",
+            "Business Intelligence",
+            "Large Language Models"
+        ],
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": "AI & Data Consultant",
+            "skills": "AI, Machine Learning, Power BI, Data Analytics"
+        }
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="content-wrapper">
+        <div class="text-content">
+            <span class="work-label">Nice to meet you!</span>
+            <h1 class="section-title">WELCOME TO ...</h1>
+            <img src="{% static 'images/about.png' %}" alt="Marwane Mezzane - AI & Data Expert" class="profile-image">
+        </div>
+
+        <div class="text-content">
+            <div class="experience-stats">
+                <p>AI & Data Consultant</p>
+            </div>
+
+            <div class="section-description">
+                <p>Hello! I'm <span class="accent">Marwane Mezzane</span>, an AI and Data consultant based in Casablanca. I help businesses convert their data into smart solutions using AI technologies and data analytics.</p>
+                
+                <p class="technical-expertise">
+                    I work with Power BI dashboards and AI tools to create solutions that make your business data more useful and help you make better decisions.
+                </p>
+            </div>
+
+            <div class="quote">
+                "Transforming static data into smart, optimized solutions"
+            </div>
+        </div>
+    </div>
+</section>
+<section class="timeline-section">
+    <div class="timeline-inner">
+        <span class="timeline-label">Experience</span>
+        <h2 class="timeline-heading">Work Experience</h2>
+        
+        <div class="timeline-container">
+            <!-- Experience 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - Present</div>
+                    <h3 class="timeline-title">Data & AI Consultant</h3>
+                    <div class="timeline-company">Solution BI, Casablanca</div>
+                    <p class="timeline-description">
+                        Specialized in data consulting and AI integration tools for high-level enterprise projects. 
+                        Working with major companies in sales and infrastructure sectors, implementing advanced 
+                        business intelligence solutions and AI-driven analytics platforms.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Experience 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <h3 class="timeline-title">Data Scientist</h3>
+                    <div class="timeline-company">Henceforth, Rabat</div>
+                    <p class="timeline-description">
+                        Developed machine learning models for predictive analytics. 
+                        Improved system efficiency by 40% through innovative algorithms.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Experience 3 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2022 - 2023</div>
+                    <h3 class="timeline-title">Python Developer</h3>
+                    <div class="timeline-company">Matious, Mohammedia</div>
+                    <p class="timeline-description">
+                        Implemented natural language processing solutions.
+                        Created automated systems that reduced manual work by 60%.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="education-section">
+    <div class="education-inner">
+        <span class="education-label">Education</span>
+        <h2 class="education-heading">Academic Journey</h2>
+        
+        <div class="education-timeline">
+            <!-- Master's Degree -->
+            <div class="education-item">
+                <div class="education-dot"></div>
+                <div class="education-content">
+                    <div class="education-date">2022 - 2024</div>
+                    <h3 class="education-title">Master's in Artificial Intelligence</h3>
+                    <div class="education-school">Rabat University</div>
+                    <p class="education-description">
+                        Specialized in Machine Learning and Neural Networks. 
+                        Research focus on Deep Learning applications in computer vision and NLP.
+                    </p>
+                    <div class="education-highlights">
+                        <span>AI</span>
+                        <span>Deep Learning</span>
+                        <span>Neural Networks</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bachelor's Degree -->
+            <div class="education-item">
+                <div class="education-dot"></div>
+                <div class="education-content">
+                    <div class="education-date">2019 - 2022</div>
+                    <h3 class="education-title">Bachelor's in Computer Science</h3>
+                    <div class="education-school">Public Universit Meknes</div>
+                    <p class="education-description">
+                        Major in Computer Science with focus on Software Engineering
+                        and Data Structures. Completed with High Honors.
+                    </p>
+                    <div class="education-highlights">
+                        <span>Software Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
