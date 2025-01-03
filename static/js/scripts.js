@@ -187,7 +187,17 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.8,
         stagger: 0.2
     });
-
+ gsap.from('.contact-form-wrapper', {
+        scrollTrigger: {
+            trigger: '.contact-form-wrapper',
+            start: 'top 80%',
+            once: true
+        },
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        delay: 0.4
+    });
    
         
 
